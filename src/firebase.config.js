@@ -1,4 +1,4 @@
-var firebaseConfig = {
+export default {
     apiKey: "AIzaSyBbaphmHgUfRCt2IwUjuLadfrctFM_Gi8U",
     authDomain: "fir-reactjs-bda90.firebaseapp.com",
     databaseURL: "https://fir-reactjs-bda90.firebaseio.com",
