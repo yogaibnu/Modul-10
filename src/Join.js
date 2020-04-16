@@ -23,6 +23,28 @@ const Join = () => {
         // Auth.setLoggedIn(true);
     };
 
+    //join dengan google akun
+    const joinGoogle = e => {
+        e.preventDefault();
+        var provider = new firebase.auth.GoogleAuthProvider();
+        firebase.auth().signInWithPopup(provider).then(function (result) {
+            // This gives you a Google Access Token. You can use it to access the Google API.
+            var token = result.credential.accessToken;
+            // The signed-in user info.
+            var user = result.user;
+            // ...
+        }).catch(function (error) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            // The email of the user's account used.
+            var email = error.email;
+            // The firebase.auth.AuthCredential type that was used.
+            var credential = error.credential;
+            // ...
+        });
+    }
+
     return (
         <div>
             <h1>Login</h1>
@@ -42,12 +64,12 @@ const Join = () => {
                     placeholder="password"
                 />
                 <hr />
-                <button class="googleBtn" type="button">
+                <button class="googleBtn" type="button" onClick={joinGoogle}>
                     <img
                         src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
                         alt="logo"
                     />
-                    Login With Google
+                    Join With Google
                 </button>
                 <button type="submit">Login</button>
                 <span>{error}</span>
